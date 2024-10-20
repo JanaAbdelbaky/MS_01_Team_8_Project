@@ -1,0 +1,103 @@
+{
+	"kind" : "toolchains",
+	"toolchains" : 
+	[
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : {},
+				"path" : "D:/pico/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe",
+				"version" : ""
+			},
+			"language" : "ASM",
+			"sourceFileExtensions" : 
+			[
+				"s",
+				"S",
+				"asm"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"D:/pico/gcc-arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include",
+						"D:/pico/gcc-arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include-fixed",
+						"D:/pico/gcc-arm-none-eabi/arm-none-eabi/include"
+					],
+					"linkDirectories" : 
+					[
+						"D:/pico/gcc-arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp",
+						"D:/pico/gcc-arm-none-eabi/arm-none-eabi/lib/thumb/v6-m/nofp",
+						"D:/pico/gcc-arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1",
+						"D:/pico/gcc-arm-none-eabi/lib/gcc",
+						"D:/pico/gcc-arm-none-eabi/arm-none-eabi/lib"
+					],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : []
+				},
+				"path" : "D:/pico/gcc-arm-none-eabi/bin/arm-none-eabi-gcc.exe",
+				"version" : "13.3.1"
+			},
+			"language" : "C",
+			"sourceFileExtensions" : 
+			[
+				"c",
+				"m"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"D:/pico/gcc-arm-none-eabi/arm-none-eabi/include/c++/13.3.1",
+						"D:/pico/gcc-arm-none-eabi/arm-none-eabi/include/c++/13.3.1/arm-none-eabi/thumb/v6-m/nofp",
+						"D:/pico/gcc-arm-none-eabi/arm-none-eabi/include/c++/13.3.1/backward",
+						"D:/pico/gcc-arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include",
+						"D:/pico/gcc-arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/include-fixed",
+						"D:/pico/gcc-arm-none-eabi/arm-none-eabi/include"
+					],
+					"linkDirectories" : 
+					[
+						"D:/pico/gcc-arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp",
+						"D:/pico/gcc-arm-none-eabi/arm-none-eabi/lib/thumb/v6-m/nofp",
+						"D:/pico/gcc-arm-none-eabi/lib/gcc/arm-none-eabi/13.3.1",
+						"D:/pico/gcc-arm-none-eabi/lib/gcc",
+						"D:/pico/gcc-arm-none-eabi/arm-none-eabi/lib"
+					],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : []
+				},
+				"path" : "D:/pico/gcc-arm-none-eabi/bin/arm-none-eabi-g++.exe",
+				"version" : "13.3.1"
+			},
+			"language" : "CXX",
+			"sourceFileExtensions" : 
+			[
+				"C",
+				"M",
+				"c++",
+				"cc",
+				"cpp",
+				"cxx",
+				"mm",
+				"mpp",
+				"CPP"
+			]
+		}
+	],
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}
