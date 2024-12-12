@@ -115,6 +115,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "D:/pico/pico-sdk/lib/tinyusb/src/common"
   "D:/pico/pico-sdk/lib/tinyusb/hw"
   "D:/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/include"
+  "D:/pico/pico-sdk/src/rp2_common/hardware_pwm/include"
   )
 
 # The set of dependency files which are needed:
@@ -176,7 +177,12 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj" "gcc" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj.d"
   "D:/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj" "gcc" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj.d"
   "D:/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj" "gcc" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/LD.c" "CMakeFiles/blink.dir/LD.c.obj" "gcc" "CMakeFiles/blink.dir/LD.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/led.c" "CMakeFiles/blink.dir/led.c.obj" "gcc" "CMakeFiles/blink.dir/led.c.obj.d"
   "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/main.c" "CMakeFiles/blink.dir/main.c.obj" "gcc" "CMakeFiles/blink.dir/main.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/motor.c" "CMakeFiles/blink.dir/motor.c.obj" "gcc" "CMakeFiles/blink.dir/motor.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/sound.c" "CMakeFiles/blink.dir/sound.c.obj" "gcc" "CMakeFiles/blink.dir/sound.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/ultrasonic.c" "CMakeFiles/blink.dir/ultrasonic.c.obj" "gcc" "CMakeFiles/blink.dir/ultrasonic.c.obj.d"
   "D:/pico/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj" "gcc" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj.d"
   )
 

@@ -1686,6 +1686,54 @@ D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
 .PHONY : D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
 
+LD.obj: LD.c.obj
+.PHONY : LD.obj
+
+# target to build an object file
+LD.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/LD.c.obj
+.PHONY : LD.c.obj
+
+LD.i: LD.c.i
+.PHONY : LD.i
+
+# target to preprocess a source file
+LD.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/LD.c.i
+.PHONY : LD.c.i
+
+LD.s: LD.c.s
+.PHONY : LD.s
+
+# target to generate assembly for a file
+LD.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/LD.c.s
+.PHONY : LD.c.s
+
+led.obj: led.c.obj
+.PHONY : led.obj
+
+# target to build an object file
+led.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/led.c.obj
+.PHONY : led.c.obj
+
+led.i: led.c.i
+.PHONY : led.i
+
+# target to preprocess a source file
+led.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/led.c.i
+.PHONY : led.c.i
+
+led.s: led.c.s
+.PHONY : led.s
+
+# target to generate assembly for a file
+led.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/led.c.s
+.PHONY : led.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -1709,6 +1757,78 @@ main.s: main.c.s
 main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/main.c.s
 .PHONY : main.c.s
+
+motor.obj: motor.c.obj
+.PHONY : motor.obj
+
+# target to build an object file
+motor.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/motor.c.obj
+.PHONY : motor.c.obj
+
+motor.i: motor.c.i
+.PHONY : motor.i
+
+# target to preprocess a source file
+motor.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/motor.c.i
+.PHONY : motor.c.i
+
+motor.s: motor.c.s
+.PHONY : motor.s
+
+# target to generate assembly for a file
+motor.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/motor.c.s
+.PHONY : motor.c.s
+
+sound.obj: sound.c.obj
+.PHONY : sound.obj
+
+# target to build an object file
+sound.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/sound.c.obj
+.PHONY : sound.c.obj
+
+sound.i: sound.c.i
+.PHONY : sound.i
+
+# target to preprocess a source file
+sound.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/sound.c.i
+.PHONY : sound.c.i
+
+sound.s: sound.c.s
+.PHONY : sound.s
+
+# target to generate assembly for a file
+sound.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/sound.c.s
+.PHONY : sound.c.s
+
+ultrasonic.obj: ultrasonic.c.obj
+.PHONY : ultrasonic.obj
+
+# target to build an object file
+ultrasonic.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/ultrasonic.c.obj
+.PHONY : ultrasonic.c.obj
+
+ultrasonic.i: ultrasonic.c.i
+.PHONY : ultrasonic.i
+
+# target to preprocess a source file
+ultrasonic.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/ultrasonic.c.i
+.PHONY : ultrasonic.c.i
+
+ultrasonic.s: ultrasonic.c.s
+.PHONY : ultrasonic.s
+
+# target to generate assembly for a file
+ultrasonic.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/ultrasonic.c.s
+.PHONY : ultrasonic.c.s
 
 # Help Target
 help:
@@ -1910,9 +2030,24 @@ help:
 	@echo ... D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.obj
 	@echo ... D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.i
 	@echo ... D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.s
+	@echo ... LD.obj
+	@echo ... LD.i
+	@echo ... LD.s
+	@echo ... led.obj
+	@echo ... led.i
+	@echo ... led.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... motor.obj
+	@echo ... motor.i
+	@echo ... motor.s
+	@echo ... sound.obj
+	@echo ... sound.i
+	@echo ... sound.s
+	@echo ... ultrasonic.obj
+	@echo ... ultrasonic.i
+	@echo ... ultrasonic.s
 .PHONY : help
 
 

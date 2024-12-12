@@ -15,7 +15,30 @@ pico_sdk_init()
 # Tell CMake where to find the executable source file
 add_executable(${PROJECT_NAME} 
     main.c
+    sound.c
+    LD.c
+    motor.c
+    led.c
+    ultrasonic.c
 )
+
+# file (GLOB FREERTOS_SOURCE
+# FreeRTOS-Kernel/tasks.c
+# FreeRTOS-Kernel/timers.c
+# FreeRTOS-Kernel/list.c
+# FreeRTOS-Kernel/queue.c
+# FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c
+
+# )
+
+# Specify the include directories for header files
+# target_include_directories(${PROJECT_NAME} PRIVATE
+#     ${CMAKE_CURRENT_LIST_DIR}
+#     ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/include
+#     ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/GCC/ARM_CM0
+#     ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/examples/coverity
+
+# )
 
 # Create map/bin/hex/uf2 files
 pico_add_extra_outputs(${PROJECT_NAME})
@@ -23,6 +46,8 @@ pico_add_extra_outputs(${PROJECT_NAME})
 # Link to pico_stdlib (gpio, time, etc. functions)
 target_link_libraries(${PROJECT_NAME} 
     pico_stdlib
+    # hardware_adc
+    hardware_pwm    
 )
 
 # Enable usb output, disable uart output

@@ -1,68 +1,77 @@
-
-
-#include <stdio.h>
 #include "pico/stdlib.h"
+#include "LD.h"
+#include "led.h"
+#include "motor.h"
+#include "sound.h"
+#include "ultrasonic.h"
+#include "stdio.h"
 
-// Define the pin numbers for the LEDs
-const uint RED_LED_PIN = 14;    // Pin for Red LED
-const uint GREEN_LED_PIN = 15;  // Pin for Green LED
-const uint BLUE_LED_PIN = 13;   // Pin for Blue LED
+// Define GPIO pins
+#define BUZZER_PIN 19 // GPIO pin for the buzzer
+#define OBJECT_DETECTION_THRESHOLD 10
 
-void setup() {
-    // Initialize the LED pins
-    gpio_init(RED_LED_PIN);
-    gpio_set_dir(RED_LED_PIN, GPIO_OUT);
-    
-    gpio_init(GREEN_LED_PIN);
-    gpio_set_dir(GREEN_LED_PIN, GPIO_OUT);
-    
-    gpio_init(BLUE_LED_PIN);
-    gpio_set_dir(BLUE_LED_PIN, GPIO_OUT);
-    
-    // Initialize chosen serial port
-    stdio_init_all();
+// Function to initialize the buzzer
+void buzzer_init(void) {
+    gpio_init(BUZZER_PIN);
+    gpio_set_dir(BUZZER_PIN, GPIO_OUT);
+    gpio_put(BUZZER_PIN, 0); // Ensure the buzzer is off initially
 }
 
-void loop() {
-    // Step 1: Wait for the first 5 seconds with all LEDs off
-    gpio_put(RED_LED_PIN, false);
-    gpio_put(GREEN_LED_PIN, false);
-    gpio_put(BLUE_LED_PIN, false);
-    sleep_ms(5000); // Delay for 5 seconds
+// Turn the buzzer on
+void buzzer_on(void) {
+    gpio_put(BUZZER_PIN, 1);
+}
 
-    // Step 2: Sequence to turn on each LED for 1 second
-    // Turn on Red LED
-    gpio_put(RED_LED_PIN, true);
-    sleep_ms(1000); // Wait for 1 second
-    gpio_put(RED_LED_PIN, false);
+// Turn the buzzer off
+void buzzer_off(void) {
+    gpio_put(BUZZER_PIN, 0);
+}
 
-    // Turn on Green LED
-    gpio_put(GREEN_LED_PIN, true);
-    sleep_ms(1000); // Wait for 1 second
-    gpio_put(GREEN_LED_PIN, false);
+// Interrupt handler for sound detection
+void sound_interrupt_handler(uint gpio, uint32_t events) {
+    if (gpio == SOUND_DETECTOR_PIN) {
+        printf("Sound detected on pin %d\n", gpio);
+        buzzer_on();
+        sleep_ms(100); // Keep buzzer on for 100ms
+        buzzer_off();
+    }
+}
 
-    // Turn on Blue LED
-    gpio_put(BLUE_LED_PIN, true);
-    sleep_ms(1000); // Wait for 1 second
-    gpio_put(BLUE_LED_PIN, false);
+// Interrupt handler for ultrasonic detection
+void ultrasonic_interrupt_handler(uint gpio, uint32_t events) {
+    if (gpio == ECHO_PIN) {
+        float distance = measure_distance();
+        printf("Measured Distance: %.2f cm\n", distance);
 
-    // Step 3: Turn on all LEDs together for 2 seconds
-    gpio_put(RED_LED_PIN, true);
-    gpio_put(GREEN_LED_PIN, true);
-    gpio_put(BLUE_LED_PIN, true);
-    sleep_ms(2000); // Wait for 2 seconds
-
-    // Turn off all LEDs
-    gpio_put(RED_LED_PIN, false);
-    gpio_put(GREEN_LED_PIN, false);
-    gpio_put(BLUE_LED_PIN, false);
+        if (distance <= OBJECT_DETECTION_THRESHOLD) {
+            // Stop the motors if an object is detected within the threshold
+            motor_control(0, false);
+        } else {
+            // Resume motor movement (e.g., forward at moderate speed)
+            motor_control(128, true); // Forward with speed 128 (50% duty cycle)
+        }
+    }
 }
 
 int main() {
-    setup(); // Call setup function to initialize LEDs
+    stdio_init_all();
 
-    // Loop continuously
+    // Initialize modules
+    init_ultrasonic();
+    motor_init();
+    buzzer_init();
+    sound_detector_init();
+
+    // Set up interrupts
+    gpio_set_irq_enabled_with_callback(SOUND_DETECTOR_PIN, GPIO_IRQ_EDGE_RISE, true, sound_interrupt_handler);
+    gpio_set_irq_enabled_with_callback(ECHO_PIN, GPIO_IRQ_EDGE_RISE, true, ultrasonic_interrupt_handler);
+
     while (true) {
-        loop(); // Execute the LED control sequence
+        // Main loop can perform other tasks or simply wait
+        tight_loop_contents(); // Efficient idle waiting
+
+        motor_control(128, true); // Forward with speed 128 (50% duty cycle)
     }
+
+    return 0;
 }
