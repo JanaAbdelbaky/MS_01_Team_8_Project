@@ -51,10 +51,10 @@ void motor_control(uint16_t speed, bool forward) {
     } else {
         // Reverse direction
         gpio_put(MOTOR1_DIR_PIN1, 0);
-        gpio_put(MOTOR1_DIR_PIN2, 0);
+        gpio_put(MOTOR1_DIR_PIN2, 1);
 
         gpio_put(MOTOR2_DIR_PIN1, 0);
-        gpio_put(MOTOR2_DIR_PIN2, 0);
+        gpio_put(MOTOR2_DIR_PIN2, 1);
     }
 
     // Set the PWM duty cycle based on the speed
@@ -98,10 +98,42 @@ void motor_control(uint16_t speed, bool forward) {
 //     pwm_set_gpio_level(pwm_pin, speed); // Scale speed (0-1) to 0-255
 // }
 
-void motor_stop() {
+void motor_stop(uint16_t speed, bool stop) {
+    if (speed > 255) speed = 255;  // Cap speed to 255
+
+     if(stop) {
+        // Reverse direction
         gpio_put(MOTOR1_DIR_PIN1, 0);
         gpio_put(MOTOR1_DIR_PIN2, 0);
 
         gpio_put(MOTOR2_DIR_PIN1, 0);
         gpio_put(MOTOR2_DIR_PIN2, 0);
+    }
+
+    // Set the PWM duty cycle based on the speed
+    pwm_set_gpio_level(MOTOR1_PWM_PIN, speed);
+    pwm_set_gpio_level(MOTOR2_PWM_PIN, speed);
+
+    // Add debugging to confirm motor control
+    //printf("Motor speed: %d, Forward: %d\n", speed, forward);
+}
+
+void motor_backward(uint16_t speed, bool backward) {
+    if (speed > 255) speed = 255;  // Cap speed to 255
+
+     if(backward) {
+        // Reverse direction
+        gpio_put(MOTOR1_DIR_PIN1, 0);
+        gpio_put(MOTOR1_DIR_PIN2, 1);
+
+        gpio_put(MOTOR2_DIR_PIN1, 0);
+        gpio_put(MOTOR2_DIR_PIN2, 1);
+    }
+
+    // Set the PWM duty cycle based on the speed
+    pwm_set_gpio_level(MOTOR1_PWM_PIN, speed);
+    pwm_set_gpio_level(MOTOR2_PWM_PIN, speed);
+
+    // Add debugging to confirm motor control
+    //printf("Motor speed: %d, Forward: %d\n", speed, forward);
 }

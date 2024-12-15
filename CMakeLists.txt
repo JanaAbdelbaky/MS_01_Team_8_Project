@@ -3,16 +3,17 @@ cmake_minimum_required(VERSION 3.12)
 
 # Include build functions from Pico SDK
 include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
+set(CMAKE_TOOLCHAIN_FILE "$ENV{PICO_SDK_PATH}/pico_toolchain.cmake")
 
-# Set name of project (as PROJECT_NAME) and C/C   standards
+# Set name of project (as PROJECT_NAME) and C/C standards
 project(blink C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
-# Creates a pico-sdk subdirectory in our project for the libraries
+# Initialize Pico SDK
 pico_sdk_init()
 
-# Tell CMake where to find the executable source file
+# Add executable source files
 add_executable(${PROJECT_NAME} 
     main.c
     sound.c
@@ -22,34 +23,40 @@ add_executable(${PROJECT_NAME}
     ultrasonic.c
 )
 
-# file (GLOB FREERTOS_SOURCE
-# FreeRTOS-Kernel/tasks.c
-# FreeRTOS-Kernel/timers.c
-# FreeRTOS-Kernel/list.c
-# FreeRTOS-Kernel/queue.c
-# FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c
+# Include FreeRTOS directories
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/include
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/GCC/ARM_CM0
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOSConfig
+)
 
-# )
+# Specify FreeRTOS source files
+file(GLOB FREERTOS_SOURCE
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/MemMang/heap_4.c
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/croutine.c
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/event_groups.c
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/list.c
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/queue.c
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/tasks.c
+    ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/timers.c
+)
 
-# Specify the include directories for header files
-# target_include_directories(${PROJECT_NAME} PRIVATE
-#     ${CMAKE_CURRENT_LIST_DIR}
-#     ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/include
-#     ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/portable/GCC/ARM_CM0
-#     ${CMAKE_CURRENT_LIST_DIR}/FreeRTOS-Kernel/examples/coverity
+# Add FreeRTOS source files to the project
+target_sources(${PROJECT_NAME} PRIVATE ${FREERTOS_SOURCE})
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 
-# )
+
 
 # Create map/bin/hex/uf2 files
 pico_add_extra_outputs(${PROJECT_NAME})
 
-# Link to pico_stdlib (gpio, time, etc. functions)
+# Link libraries
 target_link_libraries(${PROJECT_NAME} 
     pico_stdlib
-    # hardware_adc
-    hardware_pwm    
+    hardware_pwm
 )
 
-# Enable usb output, disable uart output
+# Enable USB output, disable UART output
 pico_enable_stdio_usb(${PROJECT_NAME} 1)
 pico_enable_stdio_uart(${PROJECT_NAME} 0)

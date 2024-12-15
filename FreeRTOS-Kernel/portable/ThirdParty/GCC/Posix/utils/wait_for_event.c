@@ -1,5 +1,5 @@
 /*
- * FreeRTOS Kernel V11.1.0
+ * FreeRTOS Kernel <DEVELOPMENT BRANCH>
  * Copyright (C) 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
@@ -43,9 +43,13 @@ struct event * event_create( void )
 {
     struct event * ev = malloc( sizeof( struct event ) );
 
-    ev->event_triggered = false;
-    pthread_mutex_init( &ev->mutex, NULL );
-    pthread_cond_init( &ev->cond, NULL );
+    if( ev != NULL )
+    {
+        ev->event_triggered = false;
+        pthread_mutex_init( &ev->mutex, NULL );
+        pthread_cond_init( &ev->cond, NULL );
+    }
+
     return ev;
 }
 

@@ -70,6 +70,10 @@ set(CMAKE_TARGET_DEFINITIONS_ASM
 
 # The include file search paths:
 set(CMAKE_ASM_TARGET_INCLUDE_PATH
+  "../FreeRTOS-Kernel/include"
+  "../FreeRTOS-Kernel/portable/GCC/ARM_CM0"
+  "../FreeRTOSConfig"
+  "../"
   "D:/pico/pico-sdk/src/common/pico_stdlib/include"
   "D:/pico/pico-sdk/src/rp2_common/hardware_gpio/include"
   "D:/pico/pico-sdk/src/common/pico_base/include"
@@ -177,6 +181,14 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj" "gcc" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj.d"
   "D:/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj" "gcc" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj.d"
   "D:/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj" "gcc" "CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/FreeRTOS-Kernel/croutine.c" "CMakeFiles/blink.dir/FreeRTOS-Kernel/croutine.c.obj" "gcc" "CMakeFiles/blink.dir/FreeRTOS-Kernel/croutine.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/FreeRTOS-Kernel/event_groups.c" "CMakeFiles/blink.dir/FreeRTOS-Kernel/event_groups.c.obj" "gcc" "CMakeFiles/blink.dir/FreeRTOS-Kernel/event_groups.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/FreeRTOS-Kernel/list.c" "CMakeFiles/blink.dir/FreeRTOS-Kernel/list.c.obj" "gcc" "CMakeFiles/blink.dir/FreeRTOS-Kernel/list.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c" "CMakeFiles/blink.dir/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.obj" "gcc" "CMakeFiles/blink.dir/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/FreeRTOS-Kernel/portable/MemMang/heap_4.c" "CMakeFiles/blink.dir/FreeRTOS-Kernel/portable/MemMang/heap_4.c.obj" "gcc" "CMakeFiles/blink.dir/FreeRTOS-Kernel/portable/MemMang/heap_4.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/FreeRTOS-Kernel/queue.c" "CMakeFiles/blink.dir/FreeRTOS-Kernel/queue.c.obj" "gcc" "CMakeFiles/blink.dir/FreeRTOS-Kernel/queue.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/FreeRTOS-Kernel/tasks.c" "CMakeFiles/blink.dir/FreeRTOS-Kernel/tasks.c.obj" "gcc" "CMakeFiles/blink.dir/FreeRTOS-Kernel/tasks.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/FreeRTOS-Kernel/timers.c" "CMakeFiles/blink.dir/FreeRTOS-Kernel/timers.c.obj" "gcc" "CMakeFiles/blink.dir/FreeRTOS-Kernel/timers.c.obj.d"
   "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/LD.c" "CMakeFiles/blink.dir/LD.c.obj" "gcc" "CMakeFiles/blink.dir/LD.c.obj.d"
   "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/led.c" "CMakeFiles/blink.dir/led.c.obj" "gcc" "CMakeFiles/blink.dir/led.c.obj.d"
   "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/main.c" "CMakeFiles/blink.dir/main.c.obj" "gcc" "CMakeFiles/blink.dir/main.c.obj.d"

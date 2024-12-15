@@ -5,7 +5,7 @@
 #include "pico/stdlib.h"
 
 // GPIO pin connected to the sound detector's digital output
-#define SOUND_DETECTOR_PIN 18 // Change to the GPIO pin you're using
+#define SOUND_DETECTOR_PIN 5 // Change to the GPIO pin you're using
 #define BUZZER_PIN 19  
 
 // Function to initialize the sound detector

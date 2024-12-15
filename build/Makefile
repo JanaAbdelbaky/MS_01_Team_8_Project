@@ -1686,6 +1686,198 @@ D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
 .PHONY : D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.s
 
+FreeRTOS-Kernel/croutine.obj: FreeRTOS-Kernel/croutine.c.obj
+.PHONY : FreeRTOS-Kernel/croutine.obj
+
+# target to build an object file
+FreeRTOS-Kernel/croutine.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/croutine.c.obj
+.PHONY : FreeRTOS-Kernel/croutine.c.obj
+
+FreeRTOS-Kernel/croutine.i: FreeRTOS-Kernel/croutine.c.i
+.PHONY : FreeRTOS-Kernel/croutine.i
+
+# target to preprocess a source file
+FreeRTOS-Kernel/croutine.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/croutine.c.i
+.PHONY : FreeRTOS-Kernel/croutine.c.i
+
+FreeRTOS-Kernel/croutine.s: FreeRTOS-Kernel/croutine.c.s
+.PHONY : FreeRTOS-Kernel/croutine.s
+
+# target to generate assembly for a file
+FreeRTOS-Kernel/croutine.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/croutine.c.s
+.PHONY : FreeRTOS-Kernel/croutine.c.s
+
+FreeRTOS-Kernel/event_groups.obj: FreeRTOS-Kernel/event_groups.c.obj
+.PHONY : FreeRTOS-Kernel/event_groups.obj
+
+# target to build an object file
+FreeRTOS-Kernel/event_groups.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/event_groups.c.obj
+.PHONY : FreeRTOS-Kernel/event_groups.c.obj
+
+FreeRTOS-Kernel/event_groups.i: FreeRTOS-Kernel/event_groups.c.i
+.PHONY : FreeRTOS-Kernel/event_groups.i
+
+# target to preprocess a source file
+FreeRTOS-Kernel/event_groups.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/event_groups.c.i
+.PHONY : FreeRTOS-Kernel/event_groups.c.i
+
+FreeRTOS-Kernel/event_groups.s: FreeRTOS-Kernel/event_groups.c.s
+.PHONY : FreeRTOS-Kernel/event_groups.s
+
+# target to generate assembly for a file
+FreeRTOS-Kernel/event_groups.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/event_groups.c.s
+.PHONY : FreeRTOS-Kernel/event_groups.c.s
+
+FreeRTOS-Kernel/list.obj: FreeRTOS-Kernel/list.c.obj
+.PHONY : FreeRTOS-Kernel/list.obj
+
+# target to build an object file
+FreeRTOS-Kernel/list.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/list.c.obj
+.PHONY : FreeRTOS-Kernel/list.c.obj
+
+FreeRTOS-Kernel/list.i: FreeRTOS-Kernel/list.c.i
+.PHONY : FreeRTOS-Kernel/list.i
+
+# target to preprocess a source file
+FreeRTOS-Kernel/list.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/list.c.i
+.PHONY : FreeRTOS-Kernel/list.c.i
+
+FreeRTOS-Kernel/list.s: FreeRTOS-Kernel/list.c.s
+.PHONY : FreeRTOS-Kernel/list.s
+
+# target to generate assembly for a file
+FreeRTOS-Kernel/list.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/list.c.s
+.PHONY : FreeRTOS-Kernel/list.c.s
+
+FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.obj: FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.obj
+.PHONY : FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.obj
+
+# target to build an object file
+FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.obj
+.PHONY : FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.obj
+
+FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.i: FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.i
+.PHONY : FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.i
+
+# target to preprocess a source file
+FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.i
+.PHONY : FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.i
+
+FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.s: FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.s
+.PHONY : FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.s
+
+# target to generate assembly for a file
+FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.s
+.PHONY : FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.c.s
+
+FreeRTOS-Kernel/portable/MemMang/heap_4.obj: FreeRTOS-Kernel/portable/MemMang/heap_4.c.obj
+.PHONY : FreeRTOS-Kernel/portable/MemMang/heap_4.obj
+
+# target to build an object file
+FreeRTOS-Kernel/portable/MemMang/heap_4.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/portable/MemMang/heap_4.c.obj
+.PHONY : FreeRTOS-Kernel/portable/MemMang/heap_4.c.obj
+
+FreeRTOS-Kernel/portable/MemMang/heap_4.i: FreeRTOS-Kernel/portable/MemMang/heap_4.c.i
+.PHONY : FreeRTOS-Kernel/portable/MemMang/heap_4.i
+
+# target to preprocess a source file
+FreeRTOS-Kernel/portable/MemMang/heap_4.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/portable/MemMang/heap_4.c.i
+.PHONY : FreeRTOS-Kernel/portable/MemMang/heap_4.c.i
+
+FreeRTOS-Kernel/portable/MemMang/heap_4.s: FreeRTOS-Kernel/portable/MemMang/heap_4.c.s
+.PHONY : FreeRTOS-Kernel/portable/MemMang/heap_4.s
+
+# target to generate assembly for a file
+FreeRTOS-Kernel/portable/MemMang/heap_4.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/portable/MemMang/heap_4.c.s
+.PHONY : FreeRTOS-Kernel/portable/MemMang/heap_4.c.s
+
+FreeRTOS-Kernel/queue.obj: FreeRTOS-Kernel/queue.c.obj
+.PHONY : FreeRTOS-Kernel/queue.obj
+
+# target to build an object file
+FreeRTOS-Kernel/queue.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/queue.c.obj
+.PHONY : FreeRTOS-Kernel/queue.c.obj
+
+FreeRTOS-Kernel/queue.i: FreeRTOS-Kernel/queue.c.i
+.PHONY : FreeRTOS-Kernel/queue.i
+
+# target to preprocess a source file
+FreeRTOS-Kernel/queue.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/queue.c.i
+.PHONY : FreeRTOS-Kernel/queue.c.i
+
+FreeRTOS-Kernel/queue.s: FreeRTOS-Kernel/queue.c.s
+.PHONY : FreeRTOS-Kernel/queue.s
+
+# target to generate assembly for a file
+FreeRTOS-Kernel/queue.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/queue.c.s
+.PHONY : FreeRTOS-Kernel/queue.c.s
+
+FreeRTOS-Kernel/tasks.obj: FreeRTOS-Kernel/tasks.c.obj
+.PHONY : FreeRTOS-Kernel/tasks.obj
+
+# target to build an object file
+FreeRTOS-Kernel/tasks.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/tasks.c.obj
+.PHONY : FreeRTOS-Kernel/tasks.c.obj
+
+FreeRTOS-Kernel/tasks.i: FreeRTOS-Kernel/tasks.c.i
+.PHONY : FreeRTOS-Kernel/tasks.i
+
+# target to preprocess a source file
+FreeRTOS-Kernel/tasks.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/tasks.c.i
+.PHONY : FreeRTOS-Kernel/tasks.c.i
+
+FreeRTOS-Kernel/tasks.s: FreeRTOS-Kernel/tasks.c.s
+.PHONY : FreeRTOS-Kernel/tasks.s
+
+# target to generate assembly for a file
+FreeRTOS-Kernel/tasks.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/tasks.c.s
+.PHONY : FreeRTOS-Kernel/tasks.c.s
+
+FreeRTOS-Kernel/timers.obj: FreeRTOS-Kernel/timers.c.obj
+.PHONY : FreeRTOS-Kernel/timers.obj
+
+# target to build an object file
+FreeRTOS-Kernel/timers.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/timers.c.obj
+.PHONY : FreeRTOS-Kernel/timers.c.obj
+
+FreeRTOS-Kernel/timers.i: FreeRTOS-Kernel/timers.c.i
+.PHONY : FreeRTOS-Kernel/timers.i
+
+# target to preprocess a source file
+FreeRTOS-Kernel/timers.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/timers.c.i
+.PHONY : FreeRTOS-Kernel/timers.c.i
+
+FreeRTOS-Kernel/timers.s: FreeRTOS-Kernel/timers.c.s
+.PHONY : FreeRTOS-Kernel/timers.s
+
+# target to generate assembly for a file
+FreeRTOS-Kernel/timers.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/FreeRTOS-Kernel/timers.c.s
+.PHONY : FreeRTOS-Kernel/timers.c.s
+
 LD.obj: LD.c.obj
 .PHONY : LD.obj
 
@@ -2030,6 +2222,30 @@ help:
 	@echo ... D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.obj
 	@echo ... D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.i
 	@echo ... D_/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.s
+	@echo ... FreeRTOS-Kernel/croutine.obj
+	@echo ... FreeRTOS-Kernel/croutine.i
+	@echo ... FreeRTOS-Kernel/croutine.s
+	@echo ... FreeRTOS-Kernel/event_groups.obj
+	@echo ... FreeRTOS-Kernel/event_groups.i
+	@echo ... FreeRTOS-Kernel/event_groups.s
+	@echo ... FreeRTOS-Kernel/list.obj
+	@echo ... FreeRTOS-Kernel/list.i
+	@echo ... FreeRTOS-Kernel/list.s
+	@echo ... FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.obj
+	@echo ... FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.i
+	@echo ... FreeRTOS-Kernel/portable/GCC/ARM_CM0/port.s
+	@echo ... FreeRTOS-Kernel/portable/MemMang/heap_4.obj
+	@echo ... FreeRTOS-Kernel/portable/MemMang/heap_4.i
+	@echo ... FreeRTOS-Kernel/portable/MemMang/heap_4.s
+	@echo ... FreeRTOS-Kernel/queue.obj
+	@echo ... FreeRTOS-Kernel/queue.i
+	@echo ... FreeRTOS-Kernel/queue.s
+	@echo ... FreeRTOS-Kernel/tasks.obj
+	@echo ... FreeRTOS-Kernel/tasks.i
+	@echo ... FreeRTOS-Kernel/tasks.s
+	@echo ... FreeRTOS-Kernel/timers.obj
+	@echo ... FreeRTOS-Kernel/timers.i
+	@echo ... FreeRTOS-Kernel/timers.s
 	@echo ... LD.obj
 	@echo ... LD.i
 	@echo ... LD.s

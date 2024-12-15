@@ -4,7 +4,7 @@
 #include "pico/stdlib.h"
 
 // Define the LED pin
-#define LED_PIN 22 // Replace 25 with your specific LED GPIO pin if different
+#define LED_PIN 13 // Replace 25 with your specific LED GPIO pin if different
 
 // Function declarations
 void led_init(void);

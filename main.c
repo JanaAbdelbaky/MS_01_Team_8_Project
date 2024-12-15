@@ -1,20 +1,30 @@
 #include "pico/stdlib.h"
-#include "LD.h"
-#include "led.h"
+#include "FreeRTOS.h"
+#include "task.h"
 #include "motor.h"
-#include "sound.h"
 #include "ultrasonic.h"
+#include "LD.h"
+#include "sound.h"
+#include "led.h"
 #include "stdio.h"
 
-// Define GPIO pins
-#define BUZZER_PIN 19 // GPIO pin for the buzzer
-#define OBJECT_DETECTION_THRESHOLD 10
+// Obstacle detection threshold in cm
+#define OBSTACLE_DISTANCE_THRESHOLD 20.0
+#define BUZZER_PIN 19
 
-// Function to initialize the buzzer
+volatile float distance = 0.0; // Shared variable for distance
+
+void car_task(void *pvParameters);
+void distance_task(void *pvParameters);
+void ldr_task(void *pvParameters);
+void sound_task(void *pvParameters); 
+
 void buzzer_init(void) {
     gpio_init(BUZZER_PIN);
     gpio_set_dir(BUZZER_PIN, GPIO_OUT);
     gpio_put(BUZZER_PIN, 0); // Ensure the buzzer is off initially
+    
+
 }
 
 // Turn the buzzer on
@@ -27,51 +37,89 @@ void buzzer_off(void) {
     gpio_put(BUZZER_PIN, 0);
 }
 
-// Interrupt handler for sound detection
-void sound_interrupt_handler(uint gpio, uint32_t events) {
-    if (gpio == SOUND_DETECTOR_PIN) {
-        printf("Sound detected on pin %d\n", gpio);
-        buzzer_on();
-        sleep_ms(100); // Keep buzzer on for 100ms
-        buzzer_off();
-    }
-}
-
-// Interrupt handler for ultrasonic detection
-void ultrasonic_interrupt_handler(uint gpio, uint32_t events) {
-    if (gpio == ECHO_PIN) {
-        float distance = measure_distance();
-        printf("Measured Distance: %.2f cm\n", distance);
-
-        if (distance <= OBJECT_DETECTION_THRESHOLD) {
-            // Stop the motors if an object is detected within the threshold
-            motor_control(0, false);
-        } else {
-            // Resume motor movement (e.g., forward at moderate speed)
-            motor_control(128, true); // Forward with speed 128 (50% duty cycle)
-        }
-    }
-}
 
 int main() {
     stdio_init_all();
 
-    // Initialize modules
-    init_ultrasonic();
+    // Initialize peripherals
     motor_init();
+    init_ultrasonic();
+    ldr_init();
     buzzer_init();
     sound_detector_init();
+    led_init();
 
-    // Set up interrupts
-    gpio_set_irq_enabled_with_callback(SOUND_DETECTOR_PIN, GPIO_IRQ_EDGE_RISE, true, sound_interrupt_handler);
-    gpio_set_irq_enabled_with_callback(ECHO_PIN, GPIO_IRQ_EDGE_RISE, true, ultrasonic_interrupt_handler);
+    // Create FreeRTOS tasks
+    xTaskCreate(distance_task, "DistanceTask", 256, NULL, 1, NULL);
+    xTaskCreate(car_task, "CarTask", 256, NULL, 1, NULL);
+    xTaskCreate(ldr_task, "LDRTask", 256, NULL, 1, NULL);
+    xTaskCreate(sound_task, "SoundTask", 256, NULL, 1, NULL);
+
+    // Start the FreeRTOS scheduler
+    vTaskStartScheduler();
+
+    while (1) {}
+    return 0;
+}
+
+// Task to read distance and update shared variable
+void distance_task(void *pvParameters) {
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    const TickType_t xPeriod = pdMS_TO_TICKS(100); // Update every 100ms
 
     while (true) {
-        // Main loop can perform other tasks or simply wait
-        tight_loop_contents(); // Efficient idle waiting
-
-        motor_control(128, true); // Forward with speed 128 (50% duty cycle)
+        distance = measure_distance();
+        printf("Measured distance: %.2f cm\n", distance);
+        vTaskDelayUntil(&xLastWakeTime, xPeriod);
     }
+}
 
-    return 0;
+// Task to control the car based on distance
+void car_task(void *pvParameters) {
+    while (true) {
+        if (distance < OBSTACLE_DISTANCE_THRESHOLD && distance > 0) {
+            // Stop and rotate the car if an obstacle is detected
+         motor_control(200, false);
+            printf("Obstacle detected! Stopping...\n");
+
+        } else {
+            // Move forward
+            motor_control(200, true); // Forward at speed 200
+            printf("Moving forward...\n");
+        }
+
+        vTaskDelay(pdMS_TO_TICKS(100)); // Update every 100ms
+    }
+}
+
+void ldr_task(void *pvParameters) {
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    const TickType_t xPeriod = pdMS_TO_TICKS(100);
+
+    while (true) {
+        if (is_light_detected()) {
+           led_off(); 
+        } else {
+             led_on();
+        }
+
+        vTaskDelayUntil(&xLastWakeTime, xPeriod);
+    }
+}
+
+void sound_task(void *pvParameters) {
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+    const TickType_t xPeriod = pdMS_TO_TICKS(100);
+
+    while (true) {
+        if (is_sound_detected()) {
+            buzzer_on();
+            printf("Sound detected: Buzzer ON\n");
+            vTaskDelay(pdMS_TO_TICKS(100));
+            buzzer_off();
+            printf("Buzzer OFF\n");
+        }
+
+        vTaskDelayUntil(&xLastWakeTime, xPeriod);
+    }
 }

@@ -1,5 +1,5 @@
 /*
- * FreeRTOS Kernel V11.1.0
+ * FreeRTOS Kernel <DEVELOPMENT BRANCH>
  * Copyright (C) 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * SPDX-License-Identifier: MIT
@@ -50,16 +50,13 @@
  */
 #define portARCH_NAME                    "Cortex-M35P"
 #define portHAS_ARMV8M_MAIN_EXTENSION    1
+#define portARMV8M_MINOR_VERSION         0
 #define portDONT_DISCARD                 __root
 /*-----------------------------------------------------------*/
 
 /* ARMv8-M common port configurations. */
 #include "portmacrocommon.h"
 /*-----------------------------------------------------------*/
-
-#if ( configTOTAL_MPU_REGIONS == 16 )
-    #error 16 MPU regions are not yet supported for this port.
-#endif
 
 #ifndef configENABLE_MVE
     #define configENABLE_MVE    0

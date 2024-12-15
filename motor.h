@@ -17,6 +17,7 @@
 void motor_init(void);
 void motor_control(uint16_t speed, bool forward);
 //void motor_set_speed(uint motor, float speed); // Set speed (-1.0 to 1.0)
-void motor_stop();
+void motor_stop(uint16_t speed, bool stop);
+void motor_backward(uint16_t speed, bool backward);
 
 #endif 
