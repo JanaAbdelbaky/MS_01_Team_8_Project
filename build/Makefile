@@ -1902,6 +1902,30 @@ LD.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/LD.c.s
 .PHONY : LD.c.s
 
+buzzer.obj: buzzer.c.obj
+.PHONY : buzzer.obj
+
+# target to build an object file
+buzzer.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/buzzer.c.obj
+.PHONY : buzzer.c.obj
+
+buzzer.i: buzzer.c.i
+.PHONY : buzzer.i
+
+# target to preprocess a source file
+buzzer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/buzzer.c.i
+.PHONY : buzzer.c.i
+
+buzzer.s: buzzer.c.s
+.PHONY : buzzer.s
+
+# target to generate assembly for a file
+buzzer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\blink.dir\build.make CMakeFiles/blink.dir/buzzer.c.s
+.PHONY : buzzer.c.s
+
 led.obj: led.c.obj
 .PHONY : led.obj
 
@@ -2249,6 +2273,9 @@ help:
 	@echo ... LD.obj
 	@echo ... LD.i
 	@echo ... LD.s
+	@echo ... buzzer.obj
+	@echo ... buzzer.i
+	@echo ... buzzer.s
 	@echo ... led.obj
 	@echo ... led.i
 	@echo ... led.s

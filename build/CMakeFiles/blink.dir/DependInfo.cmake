@@ -190,6 +190,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/FreeRTOS-Kernel/tasks.c" "CMakeFiles/blink.dir/FreeRTOS-Kernel/tasks.c.obj" "gcc" "CMakeFiles/blink.dir/FreeRTOS-Kernel/tasks.c.obj.d"
   "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/FreeRTOS-Kernel/timers.c" "CMakeFiles/blink.dir/FreeRTOS-Kernel/timers.c.obj" "gcc" "CMakeFiles/blink.dir/FreeRTOS-Kernel/timers.c.obj.d"
   "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/LD.c" "CMakeFiles/blink.dir/LD.c.obj" "gcc" "CMakeFiles/blink.dir/LD.c.obj.d"
+  "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/buzzer.c" "CMakeFiles/blink.dir/buzzer.c.obj" "gcc" "CMakeFiles/blink.dir/buzzer.c.obj.d"
   "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/led.c" "CMakeFiles/blink.dir/led.c.obj" "gcc" "CMakeFiles/blink.dir/led.c.obj.d"
   "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/main.c" "CMakeFiles/blink.dir/main.c.obj" "gcc" "CMakeFiles/blink.dir/main.c.obj.d"
   "D:/GUC/Semester 7/CSEN701 Embedded System Architecture/blink/motor.c" "CMakeFiles/blink.dir/motor.c.obj" "gcc" "CMakeFiles/blink.dir/motor.c.obj.d"

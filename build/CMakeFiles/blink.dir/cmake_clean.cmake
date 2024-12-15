@@ -144,6 +144,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/blink.dir/FreeRTOS-Kernel/timers.c.obj.d"
   "CMakeFiles/blink.dir/LD.c.obj"
   "CMakeFiles/blink.dir/LD.c.obj.d"
+  "CMakeFiles/blink.dir/buzzer.c.obj"
+  "CMakeFiles/blink.dir/buzzer.c.obj.d"
   "CMakeFiles/blink.dir/led.c.obj"
   "CMakeFiles/blink.dir/led.c.obj.d"
   "CMakeFiles/blink.dir/main.c.obj"

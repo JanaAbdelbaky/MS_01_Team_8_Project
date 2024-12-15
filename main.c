@@ -1,125 +1,84 @@
-#include "pico/stdlib.h"
-#include "FreeRTOS.h"
-#include "task.h"
-#include "motor.h"
-#include "ultrasonic.h"
+#include <FreeRTOS.h>
+#include <task.h>
 #include "LD.h"
-#include "sound.h"
 #include "led.h"
-#include "stdio.h"
+#include "motor.h"
+#include "sound.h"
+#include "ultrasonic.h"
+#include "buzzer.h"
 
-// Obstacle detection threshold in cm
-#define OBSTACLE_DISTANCE_THRESHOLD 20.0
-#define BUZZER_PIN 19
+// Task priorities
+#define ULTRASONIC_TASK_PRIORITY 2
+#define LIGHT_TASK_PRIORITY 2
+#define SOUND_TASK_PRIORITY 2
 
-volatile float distance = 0.0; // Shared variable for distance
+// Task stack sizes
+#define TASK_STACK_SIZE 256
 
-void car_task(void *pvParameters);
-void distance_task(void *pvParameters);
-void ldr_task(void *pvParameters);
-void sound_task(void *pvParameters); 
-
-void buzzer_init(void) {
-    gpio_init(BUZZER_PIN);
-    gpio_set_dir(BUZZER_PIN, GPIO_OUT);
-    gpio_put(BUZZER_PIN, 0); // Ensure the buzzer is off initially
-    
-
-}
-
-// Turn the buzzer on
-void buzzer_on(void) {
-    gpio_put(BUZZER_PIN, 1);
-}
-
-// Turn the buzzer off
-void buzzer_off(void) {
-    gpio_put(BUZZER_PIN, 0);
-}
-
+// Task prototypes
+void ultrasonic_task(void *pvParameters);
+void light_task(void *pvParameters);
+void sound_task(void *pvParameters);
 
 int main() {
-    stdio_init_all();
-
-    // Initialize peripherals
-    motor_init();
-    init_ultrasonic();
+    // Initialize all peripherals
     ldr_init();
-    buzzer_init();
-    sound_detector_init();
     led_init();
+    motor_init();
+    sound_detector_init();
+    init_ultrasonic();
+    buzzer_init();
 
-    // Create FreeRTOS tasks
-    xTaskCreate(distance_task, "DistanceTask", 256, NULL, 1, NULL);
-    xTaskCreate(car_task, "CarTask", 256, NULL, 1, NULL);
-    xTaskCreate(ldr_task, "LDRTask", 256, NULL, 1, NULL);
-    xTaskCreate(sound_task, "SoundTask", 256, NULL, 1, NULL);
+    // Create tasks
+    xTaskCreate(ultrasonic_task, "Ultrasonic Task", TASK_STACK_SIZE, NULL, ULTRASONIC_TASK_PRIORITY, NULL);
+    xTaskCreate(light_task, "Light Task", TASK_STACK_SIZE, NULL, LIGHT_TASK_PRIORITY, NULL);
+    xTaskCreate(sound_task, "Sound Task", TASK_STACK_SIZE, NULL, SOUND_TASK_PRIORITY, NULL);
 
-    // Start the FreeRTOS scheduler
+    // Start the scheduler
     vTaskStartScheduler();
 
-    while (1) {}
+    // The program should never reach here
+    while (1) {
+        // Infinite loop as a failsafe
+    }
+
     return 0;
 }
 
-// Task to read distance and update shared variable
-void distance_task(void *pvParameters) {
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-    const TickType_t xPeriod = pdMS_TO_TICKS(100); // Update every 100ms
-
-    while (true) {
-        distance = measure_distance();
-        printf("Measured distance: %.2f cm\n", distance);
-        vTaskDelayUntil(&xLastWakeTime, xPeriod);
-    }
-}
-
-// Task to control the car based on distance
-void car_task(void *pvParameters) {
-    while (true) {
-        if (distance < OBSTACLE_DISTANCE_THRESHOLD && distance > 0) {
-            // Stop and rotate the car if an obstacle is detected
-         motor_control(200, false);
-            printf("Obstacle detected! Stopping...\n");
-
-        } else {
-            // Move forward
-            motor_control(200, true); // Forward at speed 200
-            printf("Moving forward...\n");
+// Ultrasonic task
+void ultrasonic_task(void *pvParameters) {
+    while (1) {
+        float distance = measure_distance();
+        if (distance < 10.0) { // Adjust threshold as needed
+            motor_control(50, false); // Move backward with speed 50
         }
-
-        vTaskDelay(pdMS_TO_TICKS(100)); // Update every 100ms
+        vTaskDelay(pdMS_TO_TICKS(100)); // Check every 100ms
     }
 }
 
-void ldr_task(void *pvParameters) {
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-    const TickType_t xPeriod = pdMS_TO_TICKS(100);
-
-    while (true) {
+// Light task
+void light_task(void *pvParameters) {
+    while (1) {
         if (is_light_detected()) {
-           led_off(); 
+            led_off(); // Turn off LED if light is detected
         } else {
-             led_on();
+            led_on(); // Turn on LED if no light is detected
         }
-
-        vTaskDelayUntil(&xLastWakeTime, xPeriod);
+        vTaskDelay(pdMS_TO_TICKS(100)); // Check every 100ms
     }
 }
 
+// Sound task
 void sound_task(void *pvParameters) {
-    TickType_t xLastWakeTime = xTaskGetTickCount();
-    const TickType_t xPeriod = pdMS_TO_TICKS(100);
-
-    while (true) {
+    while (1) {
         if (is_sound_detected()) {
             buzzer_on();
-            printf("Sound detected: Buzzer ON\n");
             vTaskDelay(pdMS_TO_TICKS(100));
             buzzer_off();
-            printf("Buzzer OFF\n");
-        }
 
-        vTaskDelayUntil(&xLastWakeTime, xPeriod);
+        } else {
+            buzzer_off(); // Turn off buzzer if no sound is detected
+        }
+        vTaskDelay(pdMS_TO_TICKS(100)); // Check every 100ms
     }
 }

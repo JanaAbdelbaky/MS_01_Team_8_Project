@@ -21,6 +21,7 @@ add_executable(${PROJECT_NAME}
     motor.c
     led.c
     ultrasonic.c
+    buzzer.c
 )
 
 # Include FreeRTOS directories
